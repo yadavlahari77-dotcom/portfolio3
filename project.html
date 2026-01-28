@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahari - Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for easy color management */
+        :root {
+            --primary-bg: #EAEFF2;
+            --dark-bg: #0D2125;
+            --card-bg: #FFFFFF;
+            --accent-green: #6FCF97; /* Bright green for buttons */
+            --tag-bg: #E0E0E0;
+            --text-dark: #1A1A1A;
+            --text-grey: #555555;
+            --border-color: #BDBDBD;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+  background: #062c2f;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 50px;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #cfdede;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #5ad89b;
+}
+
+.nav-btn {
+  background: #5ad89b;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+        /* --- Main Content --- */
+        main {
+            flex: 1;
+            padding: 4rem 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: var(--dark-bg);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: var(--text-grey);
+            font-weight: 300;
+        }
+
+        /* --- Project Cards --- */
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            align-items: center;
+        }
+
+        /* Left side: Image */
+        .card-image {
+            flex: 0 0 40%;
+            height: 250px;
+            background-color: #333; /* Fallback */
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Pagination dots simulation inside image */
+        .dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+        }
+        .dot.active { background: white; }
+
+        /* Right side: Content */
+        .card-content {
+            flex: 1;
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .card-content p {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .tag {
+            background-color: #E6E8EA;
+            color: #444;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid #8FA3A0;
+            color: #2F4F4F;
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn-grey {
+            background-color: #F1F3F5;
+            color: #333;
+            border: 1px solid #E0E0E0;
+        }
+        
+        .btn-grey:hover {
+            background-color: #e2e6ea;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #8899A6;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-image {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="logo">Lahari Yadav</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portindex.html">Portfolio</a></li>
+      <li><a href="project.html">Projects</a></li>
+    </ul>
+    
+  </nav>
+
+    <main>
+        <div class="page-header">
+            <h1>Projects</h1>
+            <p>A collection of technical projects built while learning and applying concepts.</p>
+        </div>
+
+        <article class="project-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Gesture AI">
+                <div class="dots">
+                    <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>Gesture-Based Answer System(AI-model)</h2>
+                <p>Developed an AI-powered system that uses hand gestures to answer multiple-choice questions, integrating Teachable Machine for real-time gesture recognition.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Javascript</span>
+                    <span class="tag">Teachable Machine</span>
+                </div>
+                <div class="actions">
+                    <a href="https://merry-dodol-401105.netlify.app/" class="btn btn-outline"><i class="fa-solid fa-desktop"></i> Live Demo &rarr;</a>
+                    
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1555421689-d68471e189f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hate Speech Detection">
+                <div class="dots">
+                     <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>Outfit tester</h2>
+                <p>Built a real-time AI model that checks the professionalism of your outfit.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Javascript</span>
+                    
+                </div>
+                <div class="actions">
+                    <a href="https://sparkly-rabanadas-3402a8.netlify.app/" class="btn btn-outline"><i class="fa-solid fa-desktop"></i> Live Demo &rarr;</a>
+                    
+                </div>
+            </div>
+        </article>
+
+        <article class="project-card">
+            <div class="card-image">
+                <img src="https://media.istockphoto.com/id/1777656272/vector/speech-bubble-with-the-word-quiz-time-blue-label-vector-stock-illustration.jpg?s=612x612&w=0&k=20&c=yKLTMLXadEPvyBq1EM4ygbfKjV9Ul68gM8El_nfehW0=" alt="CRUD App">
+                <div class="dots">
+                     <span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2>QUIZ generator</h2>
+                <p>Created a interactive Quiz generator.</p>
+                <div class="tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Javascript</span>
+                    
+                </div>
+                <div class="actions">
+                    <a href="https://chic-chimera-04871c.netlify.app/" class="btn btn-outline"><i class="fa-solid fa-desktop"></i> Live Demo &rarr;</a>
+                    
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lahari. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
